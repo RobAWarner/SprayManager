@@ -1,5 +1,6 @@
-SprayTracker is a simple spray tracking plugin that allows you to do 3 main things, view sprays in the MOTD, remove sprays and block sprays. The following spray details are stored in a database: Player's name, player's steamid, spray filename, times sprayed, timestamp of when the spray was last used and whether the spray is blocked or not.
+SprayManager is a simple spray tracking plugin that allows you to do 3 main things, view sprays in the MOTD, remove sprays and block sprays. 
 Each spray is tracked indiviually so if the player gets a new spray, their old spray details are still stored and their new spray details will be added.
+
 I also created a new module for the sourcemod IRC relay plugin SourceIRC by Azelphur, this adds commands to use from irc.
 
 Current Release: 1.4.1 (19 Feb 2012)
