@@ -19,7 +19,7 @@ public Plugin:myinfo =
 	name = "Spray Manager",
 	author = "Monster Killer",
 	description = "Remove, Block and View Sprays",
-	version = "1.4.1",
+	version = "1.4.2",
 	url = "http://MonsterProjects.org/"
 };
 
@@ -103,7 +103,7 @@ public Native_Spray_GenURL(Handle:plugin, numParams)
 	}
 	
 	new client = GetClientOfUserId(userid);
-	GetClientAuthString(client, steamid, sizeof(steamid));
+    GetClientAuthId(client, AuthId_Steam2, steamid, sizeof(steamid));
 	
 	GetConVarString(cvar_sprayurl, sprayurl, sizeof(sprayurl));
 	ReplaceString(sprayurl, sizeof(sprayurl), "{SPRAY}", decalfile);
@@ -273,7 +273,7 @@ public ViewSpray(client, target)
 {
 	decl String:TargetName[255], String:sprayurl[255], String:TargetSteamID[100], String:TargetUserIDString[100];
 	GetClientName(target, TargetName, sizeof(TargetName));
-	GetClientAuthString(target, TargetSteamID, sizeof(TargetSteamID));
+	GetClientAuthId(target, AuthId_Steam2, TargetSteamID, sizeof(TargetSteamID));
 	new TargetUserID = GetClientUserId(target);
 	IntToString(TargetUserID, TargetUserIDString, sizeof(TargetUserIDString));
 	
@@ -311,7 +311,7 @@ public T_SprayCallback(Handle:owner, Handle:hndl, const String:error[], any:user
 	} else if (!SQL_FetchRow(hndl)) {
 		decl String:Name_Safe[64], String:Name[64], String:SteamID[20], String:SteamID_Safe[50], String:SprayFile[11], String:query[255]; 
 		GetClientName(client, Name, sizeof(Name));
-		GetClientAuthString(client, SteamID, sizeof(SteamID));
+		GetClientAuthId(client, AuthId_Steam2, SteamID, sizeof(SteamID));
 		
 		SQL_EscapeString(hDatabase, Name, Name_Safe, sizeof(Name_Safe));
 		SQL_EscapeString(hDatabase, SteamID, SteamID_Safe, sizeof(SteamID_Safe));
@@ -340,7 +340,7 @@ public T_SprayCallback(Handle:owner, Handle:hndl, const String:error[], any:user
 			GetClientName(client, Name, sizeof(Name));
 			SQL_EscapeString(hDatabase, Name, Name_Safe, sizeof(Name_Safe));
 			
-			GetClientAuthString(client, steamid, sizeof(steamid));
+			GetClientAuthId(client, AuthId_Steam2, steamid, sizeof(steamid));
 			SQL_EscapeString(hDatabase, steamid, steamid_safe, sizeof(steamid_safe));
 			SQL_FetchString(hndl, 0, SprayFile, sizeof(SprayFile));
 			
@@ -388,7 +388,7 @@ public Action:PlayerSpray(const String:te_name[],const clients[],client_count,Fl
 	
 	decl String:query[255], String:decalfile[11], String:decalfile_safe[20], String:steamid[20], String:steamid_safe[50];
 	
-	GetClientAuthString(client, steamid, sizeof(steamid));
+	GetClientAuthId(client, AuthId_Steam2, steamid, sizeof(steamid));
 	
 	new userid = GetClientUserId(client);
 	
@@ -655,7 +655,7 @@ public MenuHandler_SprayView(Handle:menu, MenuAction:action, param1, param2)
 		
 		decl String:TargetName[255], String:TargetSteamID[100];
 		GetClientName(target, TargetName, sizeof(TargetName));
-		GetClientAuthString(target, TargetSteamID, sizeof(TargetSteamID));
+		GetClientAuthId(target, AuthId_Steam2, TargetSteamID, sizeof(TargetSteamID));
 		
 		new TargetUserID = GetClientUserId(target);
 		ClientTargetUserID[param1] = TargetUserID;

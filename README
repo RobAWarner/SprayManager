@@ -1,8 +1,0 @@
-Project Page: http://monsterprojects.org/projects/spray-manager
-
-SprayManager is a simple spray tracking plugin that allows you to do 3 main things, view sprays in the MOTD, remove sprays and block sprays. 
-Each spray is tracked indiviually so if the player gets a new spray, their old spray details are still stored and their new spray details will be added.
-
-I also created a new module for the sourcemod IRC relay plugin SourceIRC by Azelphur, this adds commands to use from irc.
-
-Current Release: 1.4.1 (19 Feb 2012)
