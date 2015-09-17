@@ -103,7 +103,7 @@ public Native_Spray_GenURL(Handle:plugin, numParams)
 	}
 	
 	new client = GetClientOfUserId(userid);
-    GetClientAuthId(client, AuthId_Steam2, steamid, sizeof(steamid));
+	GetClientAuthId(client, AuthId_Steam2, steamid, sizeof(steamid));
 	
 	GetConVarString(cvar_sprayurl, sprayurl, sizeof(sprayurl));
 	ReplaceString(sprayurl, sizeof(sprayurl), "{SPRAY}", decalfile);
